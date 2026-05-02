@@ -34,12 +34,12 @@ class FilmWork(UUIDMixin, TimeStampedMixin):
         TV_SHOW = 'tv_show', 'Serie de TV'
 
     title = models.CharField(_('title'), max_length=256)
-    description = models.TextField('description', blank=True)
-    creation_date = models.DateField('creation_date', blank=True, null=True)
-    rating = models.FloatField('rating', blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(100)])
-    type = models.CharField('type', max_length=64, choices=Type.choices)
-    certificate = models.CharField('certificate', max_length=512, blank=True)
-    file_path = models.FileField('file', blank=True, null=True, upload_to='movies/')
+    description = models.TextField(_('description'), blank=True)
+    creation_date = models.DateField(_('creation_date'), blank=True, null=True)
+    rating = models.FloatField(_('rating'), blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    type = models.CharField(_('type'), max_length=64, choices=Type.choices)
+    certificate = models.CharField(_('certificate'), max_length=512, blank=True)
+    file_path = models.FileField(_('file'), blank=True, null=True, upload_to='movies/')
     
     genres = models.ManyToManyField(Genre, through='GenreFilmWork')
     persons = models.ManyToManyField('Person', through='PersonFilmWork')
